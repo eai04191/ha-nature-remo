@@ -8,6 +8,7 @@ from typing import Any
 from unittest.mock import patch
 
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers import entity_registry as er
 import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from pytest_homeassistant_custom_component.test_util.aiohttp import (
@@ -163,3 +164,10 @@ async def loaded_entry(
     """読み込み済みのconfig entry。"""
     await setup_integration(hass, config_entry)
     return config_entry
+
+
+def entity_id_of(hass: HomeAssistant, platform: str, unique_id: str) -> str:
+    """unique_idからentity_idを引く。"""
+    entity_id = er.async_get(hass).async_get_entity_id(platform, DOMAIN, unique_id)
+    assert entity_id is not None
+    return entity_id

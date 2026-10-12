@@ -1,0 +1,13 @@
+{
+  "domain": "nature_remo",
+  "name": "Nature Remo",
+  "codeowners": ["@eai04191"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/eai04191/ha-nature-remo#readme",
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/eai04191/ha-nature-remo/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

@@ -1,0 +1,20 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Nature Remo",
+        "description": "Enter an access token issued at home.nature.global.",
+        "data": {
+          "api_key": "Access token"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "The access token was rejected.",
+      "cannot_connect": "Failed to connect to the Nature API."
+    },
+    "abort": {
+      "already_configured": "This Nature account is already configured."
+    }
+  }
+}
