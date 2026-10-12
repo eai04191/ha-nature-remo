@@ -11,19 +11,12 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    env:
-      # setup-pythonで入れたPythonを使い、uvが別の版をダウンロードしないようにする
-      UV_PYTHON_DOWNLOADS: never
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      # uv 0.7.2はPython 3.14の正式版を配布物として知らず、アルファ版を取得してしまうため、Pythonはsetup-pythonで入れる
-      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
-        with:
-          python-version-file: .python-version
       - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           # uv.lockを生成したuvと揃え、--lockedがuvの版の違いで失敗しないようにする
-          version: "0.7.2"
+          version: "0.13.0"
           enable-cache: true
       - name: 依存をインストール
         run: uv sync --locked
