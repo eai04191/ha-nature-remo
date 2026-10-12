@@ -59,6 +59,7 @@ async def test_update_failure_marks_unavailable(
     """更新に失敗したらentityを利用不可にし、回復したら戻す。"""
     entity_ids = [
         entity_id_of(hass, "climate", "nature_remo_climate_ac-living"),
+        entity_id_of(hass, "sensor", "nature_remo_sensor_dev-living_te"),
     ]
     fake_api.fail(HTTPStatus.TOO_MANY_REQUESTS)
 

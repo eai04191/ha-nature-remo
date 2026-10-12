@@ -7,7 +7,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from .api import NatureRemoClient
 from .coordinator import NatureRemoConfigEntry, NatureRemoCoordinator
 
-PLATFORMS: list[Platform] = [Platform.CLIMATE]
+PLATFORMS: list[Platform] = [Platform.CLIMATE, Platform.SENSOR]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: NatureRemoConfigEntry) -> bool:
