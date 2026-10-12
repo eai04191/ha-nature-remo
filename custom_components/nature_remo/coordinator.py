@@ -76,10 +76,13 @@ class NatureRemoCoordinator(DataUpdateCoordinator[NatureRemoData]):
     def async_apply_aircon_settings(
         self, appliance_id: str, settings: AirconSettings
     ) -> None:
-        """操作APIの応答で得た設定を即時反映する。"""
-        self.async_set_updated_data(
-            self.data.with_aircon_settings(appliance_id, settings)
-        )
+        """操作APIの応答で得た設定を即時反映する。
+
+        async_set_updated_dataは再取得のdebounceを解除し、連続操作のたびに即時の
+        再取得を招いてレート制限を消費するため、データの差し替えと通知だけを行う。
+        """
+        self.data = self.data.with_aircon_settings(appliance_id, settings)
+        self.async_update_listeners()
 
 
 def _seconds_until(reset_at: datetime | None) -> float | None:
